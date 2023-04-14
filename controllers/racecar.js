@@ -1,8 +1,15 @@
 var racecar = require('../models/racecar');
 // List of all racecar
-exports.racecar_list = function(req, res) {
-res.send('NOT IMPLEMENTED: racecar list');
-};
+exports.racecar_list = async function(req, res) {
+    try{
+    theracecar = await racecar.find();
+    res.send(theracecar);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
 // for a specific racecar.
 exports.racecar_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: racecar detail: ' + req.params.id);

@@ -1,9 +1,6 @@
 var express = require('express');
+const racecar_controlers= require('../controllers/racecar');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('racecar', { title: 'Search Results' });
-});
-
+/* GET racecars */
+router.get('/', racecar_controlers.racecar_view_all_Page );
 module.exports = router;

@@ -50,9 +50,29 @@ exports.racecar_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: racecar delete DELETE ' + req.params.id);
 };
 // Handle racecar update form on PUT.
-exports.racecar_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: racecar update PUT' + req.params.id);
-};
+//exports.racecar_update_put = function(req, res) {
+//res.send('NOT IMPLEMENTED: racecar update PUT' + req.params.id);
+//};
+// Handle racecar update form on PUT.
+exports.racecar_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await racecar.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.driver)
+    toUpdate.driver = req.body.driver;
+    if(req.body.ranking) toUpdate.ranking = req.body.ranking;
+    //if(req.body.size) toUpdate.size = req.body.size;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
+    }
+    };
 // VIEWS
 // Handle a show all view
 exports.racecar_view_all_Page = async function(req, res) {

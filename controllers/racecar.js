@@ -78,7 +78,7 @@ exports.racecar_update_put = async function(req, res) {
 exports.racecar_view_all_Page = async function(req, res) {
     try{
     theracecar = await racecar.find();
-    res.render('racecar', { title: 'racecar Search Results', results: theracecar });
+    res.render('racecar', { title: 'Racecar Search Results', results: theracecar });
     }
     catch(err){
     res.status(500);
@@ -133,7 +133,7 @@ exports.racecar_update_Page = async function(req, res) {
     console.log("update view for item "+req.query.id)
     try{
     let result = await racecar.findById(req.query.id)
-    res.render('racecarupdate', { title: 'racecar Update', toShow: result });
+    res.render('racecarupdate', { title: 'Racecar Update', toShow: result });
     }
     catch(err){
     res.status(500)

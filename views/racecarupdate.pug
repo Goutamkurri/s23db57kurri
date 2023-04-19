@@ -2,22 +2,25 @@ extends layout
 
 block content
     h1= title
-    - let racecarid = toShow._id
-    - let driver = toShow.driver
-    - let ranking = toShow.ranking
+    if (toShow == null)
+      h2 No instance to update
+    else
+      - let racecarid = toShow._id
+      - let driver = toShow.driver
+      - let ranking = toShow.ranking
 
-    div.row(class='mb-2')
-      div.mr-1 ID is
-      div #{racecarid}
-    - let actionid = "/resource/racecar/" + racecarid
-    form(id='racecarForm', action= actionid, method="PUT")
-      div.form-group
-        label.racecarAttr(for='driver') Racecar type :
-        input#driver(type='text', name='driver', value= driver )
-      div.form-group
-        label.racecarAttr(for='ranking') Racecar ranking :
-        input#ranking(type='number', name='ranking', value= ranking )
-      input(type="submit")
+      div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{racecarid}
+      - let actionid = "/resource/racecar/" + racecarid
+      form(id='racecarForm', action= actionid, method="PUT")
+        div.form-group
+          label.racecarAttr(for='driver') Racecar type :
+          input#driver(type='text', name='driver', value= driver )
+        div.form-group
+          label.racecarAttr(for='ranking') Racecar ranking :
+          input#ranking(type='number', name='ranking', value= ranking )
+        input(type="submit")
 
     script.
       document.forms['racecarForm'].addEventListener('submit', (event) => {

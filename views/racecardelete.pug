@@ -7,7 +7,7 @@ block content
     - let racecarid = toShow._id
     - let driver = toShow.driver
     - let ranking = toShow.ranking
-    - let actionid = "/resource/racecars/" + racecarid
+    - let actionid = "/resource/racecar/" + racecarid
     script let actionid = "#{actionid}"
     div
       div.row
@@ -18,13 +18,13 @@ block content
         div #{driver}
       div.row
         div(class='racecarAttr mr-3') Racecar ranking is :
-        div #{racecarranking}
+        div #{ranking}
     button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
     button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
     script.
       function cancel() {
         // Go back to the home page for the racecar collection
-        window.location.href='/racecars'
+        window.location.href='/racecar'
       }
     script.
       function deleteOnid() {
@@ -36,7 +36,7 @@ block content
           return resp.json(); // or resp.text() or whatever the server sends
         }).then((body) => {
           alert("Delete succeded")
-          window.location.href='/racecars'
+          window.location.href='/racecar'
           // TODO handle body
         }).catch((error) => {
           // TODO handle error

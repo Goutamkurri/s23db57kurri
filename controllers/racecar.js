@@ -85,3 +85,16 @@ exports.racecar_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+
+// Handle racecar delete on DELETE.
+exports.racecar_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await racecar.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };

@@ -112,3 +112,17 @@ exports.racecar_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
     };
+
+// Handle building the view for creating a racecar.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.racecar_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('racecarcreate', { title: 'Racecar Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };

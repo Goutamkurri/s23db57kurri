@@ -20,7 +20,7 @@ block content
         div.form-group
           label.racecarAttr(for='ranking') Racecar ranking :
           input#ranking(type='number', name='ranking', value= ranking )
-        input(type="submit")
+        input(type="submit" class="btn btn-primary m-2" )
 
     script.
       document.forms['racecarForm'].addEventListener('submit', (event) => {

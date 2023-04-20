@@ -10,3 +10,21 @@ a {
   background-color: aquamarine;
   width: 120px;
   }
+  input {
+    width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+    border: 2px outset lightskyblue;
+    border-radius: 4px;
+    background-color:lightcoral;
+  color: white;
+  }
+  h1 {
+    background-color: cornflowerblue;
+    text-align: center;
+  }
+  div {
+    padding: 5  px;
+    margin: 0;
+  }

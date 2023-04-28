@@ -2,16 +2,26 @@ extends layout
 
 block content
   h1= title
+  - let destination3 = `dispatch(\"/racecar/create\")`
+  p 
+    button.btn( class="btn-success ml-1", onclick= destination3) Create
   p
    - let result = results
     div(class="container-fliud")
         div(class="row")
             each item,ind in result 
                 - let destination = `dispatch(\"/racecar/update?id=${item._id}\")`
+                - let destination1  = `dispatch(\"/racecar/delete?id=${item._id}\")`
+                - let destination2  = `dispatch(\"/racecar/detail?id=${item._id}\")`
                 div(class="col-sm-2" class="m-1")  
                     h3 Driver  #{item.driver}
                     p Ranking  #{item.ranking}
-                    button.btn( class="btn-primary ml-1", onclick= destination) Update
+                    p 
+                     button.btn( class="btn-primary ml-1", onclick= destination) Update
+                    p
+                     button.btn( class="btn-danger ml-1", onclick= destination1) Delete  
+                    p
+                     button.btn( class="btn-info ml-1", onclick= destination2) Detail
     script. 
         function dispatch(path){
           console.log(path);

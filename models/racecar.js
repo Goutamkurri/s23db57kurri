@@ -1,7 +1,15 @@
 const mongoose = require("mongoose")
 const racecarSchema = mongoose.Schema({
-driver: String,
+driver: {
+    type: String,
+    minlength: 2
+},
 constructor: String,
-ranking: Number
+ranking: {
+    type: Number,
+    min: 0,
+    max: 20,
+    required: true
+}
 })
 module.exports = mongoose.model("racecar",racecarSchema)
